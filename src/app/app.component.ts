@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { LocalstorageService } from './services/localstorage.service';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +8,13 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'carbon-tracker';
+
+  constructor(
+    private storage: LocalstorageService
+  ) { }
+
+  ngOnInit() {
+    console.log("apps running")
+    this.storage.storeData();
+  }
 }

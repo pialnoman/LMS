@@ -1,0 +1,31 @@
+<mat-drawer-container class="example-container" autosize>
+    <mat-drawer #drawer class="example-sidenav" mode="side">
+        <mat-list role="list">
+            <mat-list-item role="listitem" [routerLink]="'/dashboard'">Dashboard</mat-list-item>
+            <mat-list-item role="listitem" [routerLink]="'/my-enrollment'">My Enrollment</mat-list-item>
+            <mat-list-item role="listitem" [routerLink]="'/my-profile'">My Profile</mat-list-item>
+            <!-- <mat-list-item role="listitem">Item 3</mat-list-item> -->
+        </mat-list>
+    </mat-drawer>
+
+    <div class="example-sidenav-content">
+        <mat-toolbar>
+            <div class="d-flex justify-content-between align-items-center w-100">
+                <div class="d-flex justify-content-start align-items-center">
+                    <button mat-icon-button class="example-icon" (click)="drawer.toggle()"
+                        aria-label="Example icon-button with menu icon">
+                        <mat-icon>menu</mat-icon>
+                    </button>
+                    <span>LMS</span>
+                </div>
+                <div>
+                    <button mat-icon-button class="example-icon favorite-icon"
+                        aria-label="Example icon-button with heart icon">
+                        <mat-icon>logout</mat-icon>
+                    </button>
+                </div>
+            </div>
+        </mat-toolbar>
+        <router-outlet></router-outlet>
+    </div>
+</mat-drawer-container>
