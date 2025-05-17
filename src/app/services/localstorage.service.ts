@@ -188,5 +188,16 @@ export class LocalstorageService {
     return data.courses.filter(course => enrolledCourseIds.includes(course.id));
   }
 
+  getCompletedCoursesForUser(userId: string): { course: Course; completedAt: string }[] {
+    const data = this.getItem();
+    if (!data) return [];
+
+    return data.enrollments
+      .filter(e => e.userId === userId && e.status === 'completed')
+      .map(e => {
+        const course = data.courses.find(c => c.id === e.courseId)!;
+        return { course, completedAt: e.completedAt! };
+      });
+  }
 
 }

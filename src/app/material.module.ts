@@ -21,8 +21,9 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { CdkMenuModule } from '@angular/cdk/menu';
-import {DialogModule} from '@angular/cdk/dialog';
-import {MatChipsModule} from '@angular/material/chips';
+import { DialogModule } from '@angular/cdk/dialog';
+import { MatChipsModule } from '@angular/material/chips';
+import { MatSliderModule } from '@angular/material/slider';
 
 @NgModule({
   declarations: [],
@@ -47,7 +48,8 @@ import {MatChipsModule} from '@angular/material/chips';
     MatCheckboxModule,
     MatSelectModule,
     MatFormFieldModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    MatSliderModule
   ]
 })
 export class MaterialModule { }
