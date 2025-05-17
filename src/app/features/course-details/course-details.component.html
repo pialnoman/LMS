@@ -1,0 +1,23 @@
+<div class="container mt-5" *ngIf="course">
+    <mat-card class="example-card clickable-course" appearance="outlined">
+        <mat-card-header>
+            <mat-card-title>{{ course.title }}</mat-card-title>
+            <mat-card-subtitle>{{ course.category }} | Duration:
+                {{ course.duration }} hrs</mat-card-subtitle>
+        </mat-card-header>
+        <mat-card-content>
+            <p>{{ course.description }}</p>
+            <p *ngFor="let item of course.prerequisites">
+                prerequisite Courses: <b>{{ getPrerequisites(item) }}</b>
+            </p>
+            <mat-chip-set aria-label="Chihuahua traits">
+                <mat-chip>{{ course.isFree ? "Free" : "Paid" }}</mat-chip>
+            </mat-chip-set>
+            <div class="d-flex justify-content-end">
+                <button mat-raised-button color="primary" (click)="enrollWithCourse(course)">
+                    ENROLL
+                </button>
+            </div>
+        </mat-card-content>
+    </mat-card>
+</div>

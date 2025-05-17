@@ -1,0 +1,33 @@
+<div class="container mt-5">
+    <table mat-table [dataSource]="completedCourses" *ngIf="completedCourses.length">
+
+        <!-- Title -->
+        <ng-container matColumnDef="title">
+            <th mat-header-cell *matHeaderCellDef> Title </th>
+            <td mat-cell *matCellDef="let e"> {{ e.course.title }} </td>
+        </ng-container>
+
+        <!-- Category -->
+        <ng-container matColumnDef="category">
+            <th mat-header-cell *matHeaderCellDef> Category </th>
+            <td mat-cell *matCellDef="let e"> {{ e.course.category }} </td>
+        </ng-container>
+
+        <!-- CompletedAt -->
+        <ng-container matColumnDef="completedAt">
+            <th mat-header-cell *matHeaderCellDef> Completed On </th>
+            <td mat-cell *matCellDef="let e"> {{ e.completedAt | date:'yyyy‑MM‑dd' }} </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="['title','category','completedAt']"></tr>
+        <tr mat-row *matRowDef="let row; columns: ['title','category','completedAt']"></tr>
+    </table>
+
+    <p *ngIf="!completedCourses.length">No completed courses yet.</p>
+
+    <div class="summary" *ngIf="completedCourses.length">
+        <strong>Courses completed:</strong> {{ completedCourses.length }}<br>
+        <strong>Total learning hours:</strong> {{ totalHours }} h
+    </div>
+
+</div>

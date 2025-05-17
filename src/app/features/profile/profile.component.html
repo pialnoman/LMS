@@ -1,0 +1,62 @@
+<div class="container mt-5" *ngIf="userDetails">
+    <mat-card *ngIf="!showEditForm" class="example-card" appearance="outlined">
+        <mat-card-header>
+            <mat-card-title>{{ userDetails.name }}</mat-card-title>
+            <mat-card-subtitle>{{ userDetails.email }} </mat-card-subtitle>
+        </mat-card-header>
+        <mat-card-content>
+            <p>
+                preferred Categories:
+                <b *ngFor="
+            let item of userDetails.preferences.preferredCategories;
+            let i = index;
+            let last = last
+          ">
+                    {{ item }}<span *ngIf="!last">, </span>
+                </b>
+            </p>
+            <div class="d-flex justify-content-end">
+                <button mat-raised-button color="primary" (click)="editUser();">
+                    EDIT
+                </button>
+            </div>
+        </mat-card-content>
+    </mat-card>
+
+    <form *ngIf="userForm && showEditForm" [formGroup]="userForm" (ngSubmit)="save()">
+        <mat-form-field>
+            <mat-label>Name</mat-label>
+            <input matInput formControlName="name" />
+        </mat-form-field>
+        <br />
+        <mat-form-field>
+            <mat-label>Email</mat-label>
+            <input matInput formControlName="email" />
+        </mat-form-field>
+        <br />
+        <!-- <mat-form-field>
+            <mat-label>Preferred Categories (comma-separated)</mat-label>
+            <input matInput formControlName="preferredCategories" />
+        </mat-form-field> -->
+
+        <mat-form-field appearance="fill">
+            <mat-label>Preferred Categories</mat-label>
+            <mat-select formControlName="preferredCategories" multiple>
+                <mat-option value="Programming">Programming</mat-option>
+                <mat-option value="Business">Business</mat-option>
+                <mat-option value="Marketing">Marketing</mat-option>
+            </mat-select>
+        </mat-form-field>
+        <br />
+        <mat-checkbox formControlName="notifications">
+            Receive Email Notifications
+        </mat-checkbox>
+
+        <br /><br />
+        <button mat-raised-button color="primary" type="submit">Save</button>
+        &nbsp;
+        <button mat-raised-button color="primary" (click)="showEditForm = false">
+            Cencel
+        </button>
+    </form>
+</div>
