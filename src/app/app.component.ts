@@ -7,7 +7,7 @@ import { LocalstorageService } from './services/localstorage.service';
   styleUrl: './app.component.scss'
 })
 export class AppComponent {
-  title = 'carbon-tracker';
+  title = 'lms';
 
   constructor(
     private storage: LocalstorageService
